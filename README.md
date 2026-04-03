@@ -18,3 +18,39 @@ Financial institutions often face "silent" revenue loss due to fee application f
 * Identified simulated revenue leakage across 15% of transactions.
 * Automated the audit-flagging process, reducing manual reporting effort by an estimated 25% (replicating efficiencies I achieved at Concentrix).
 * Grouped critical risk vectors into a single 100% traceable data model.
+
+## 🛠️ Technical Implementation: DAX Logic
+
+To bridge the gap between static reporting and active risk management, I developed a suite of DAX measures. These formulas allow stakeholders to interactively adjust risk sensitivity and visualize financial impact in real-time.
+
+### 1. Dynamic Sensitivity Logic
+This measure is the core of the "What-If" analysis, allowing the dashboard to react to the user-controlled slider.
+Dynamic Risk Flag = 
+VAR SelectedThreshold = [Risk Threshold Value]
+RETURN
+IF(
+    MAX('power_bi_risk_data'[device_risk_score]) >= SelectedThreshold, 
+    1, 
+    0
+)
+
+### 2. Financial Impact Metrics
+Calculates the total value of identified revenue leakage across the filtered dataset.
+Total Leakage = SUM('power_bi_risk_data'[revenue_leakage])
+
+### 3. Efficiency Ratios
+Expresses the leakage as a percentage of total transaction volume to highlight systemic risk levels.
+Leakage % = 
+DIVIDE(
+    [Total Leakage], 
+    SUM('power_bi_risk_data'[amount]), 
+    0
+)
+
+### 4. Operational Audit Count
+A count of high-priority cases that require immediate intervention based on the dynamic threshold.
+Audit Cases = 
+CALCULATE(
+    COUNT('power_bi_risk_data'[transaction_id]),
+    FILTER('power_bi_risk_data', [Dynamic Risk Flag] = 1)
+)
