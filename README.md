@@ -54,3 +54,14 @@ CALCULATE(
     COUNT('power_bi_risk_data'[transaction_id]),
     FILTER('power_bi_risk_data', [Dynamic Risk Flag] = 1)
 )
+
+### Screenshots:
+
+1. Dashboard Overview
+   ![Main Dashboard Overview](Screenshots/dashboard_overview.png)
+
+2. Risk Threshold Interaction
+   ![Main Dashboard Overview](screenshots/risk_threshold_interaction.png)
+
+3. Technical Documentation Page
+   ![Main Dashboard Overview](screenshots/technical_documentation_page.png)
