@@ -61,7 +61,7 @@ CALCULATE(
    ![Main Dashboard Overview](Screenshots/dashboard_overview.png)
 
 2. Risk Threshold Interaction
-   ![Main Dashboard Overview](screenshots/risk_threshold_interaction.png)
+   ![Risk Threshold Interaction](Screenshots/risk_threshold_interaction.png)
 
 3. Technical Documentation Page
-   ![Main Dashboard Overview](screenshots/technical_documentation_page.png)
+   ![Technical Documentation Page](Screenshots/technical_documentation_page.png)
